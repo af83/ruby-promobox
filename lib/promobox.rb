@@ -25,7 +25,7 @@ class Promobox
 
   def build_query(action, params)
     ts = Time.now.to_i
-    token = Base64.encode64(Digest::SHA1.digest("#{@hash_password}#{ts}#{@api_key}"))
+    token = Base64.encode64(Digest::SHA1.digest("#{@hash_password}#{ts}#{@api_key}")).chomp
     query = {
       ts: ts.to_s,
       login: @login,
