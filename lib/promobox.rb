@@ -4,6 +4,7 @@ require 'digest/sha1'
 require 'base64'
 require 'uri'
 require 'open-uri'
+require 'multi_json'
 
 class Promobox
 
@@ -18,7 +19,8 @@ class Promobox
   end
 
   def coupons(params={})
-    build_query(__method__, params)
+    response = open(build_query(__method__, params)).read
+    MultiJson.decode(response)
   end
 
   private

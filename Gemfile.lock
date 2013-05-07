@@ -2,11 +2,13 @@ PATH
   remote: .
   specs:
     ruby-promobox (0.0.1)
+      multi_json (~> 1.0)
 
 GEM
   remote: http://rubygems.org/
   specs:
     minitest (2.5.1)
+    multi_json (1.7.2)
     rr (1.0.5)
 
 PLATFORMS

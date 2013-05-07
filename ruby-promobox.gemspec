@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.files = Dir["LICENSE", "README.markdown", "Gemfile", "lib/**/*.rb", 'test/**/*.rb']
   s.test_files = Dir.glob("test/*_test.rb")
   s.require_paths = ["lib"]
+  s.add_dependency "multi_json", "~> 1.0"
   s.add_development_dependency "minitest", ">=2.0"
   s.add_development_dependency "rr", ">=1.0.5"
 end
