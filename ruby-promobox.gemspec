@@ -12,4 +12,5 @@ Gem::Specification.new do |s|
   s.test_files = Dir.glob("test/*_test.rb")
   s.require_paths = ["lib"]
   s.add_development_dependency "minitest", ">=2.0"
+  s.add_development_dependency "rr", ">=1.0.5"
 end
