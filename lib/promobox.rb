@@ -18,10 +18,12 @@ class Promobox
     @hash_password = Digest::MD5.digest("#{@password}{#{@api_key}}").unpack('H*').first
   end
 
-  def coupons(params={})
-    url = build_query(__method__, params)
-    response = OpenURI::OpenRead.read(url)
-    MultiJson.decode(response)
+  %w{coupons search}.each do |m|
+    define_method m do |*params|
+      url = build_query(m, params || {})
+      response = OpenURI::OpenRead.read(url)
+      MultiJson.decode(response)
+    end
   end
 
   private
