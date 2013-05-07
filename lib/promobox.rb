@@ -19,7 +19,8 @@ class Promobox
   end
 
   def coupons(params={})
-    response = open(build_query(__method__, params)).read
+    url = build_query(__method__, params)
+    response = OpenURI::OpenRead.read(url)
     MultiJson.decode(response)
   end
 
