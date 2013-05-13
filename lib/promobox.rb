@@ -38,6 +38,8 @@ class Promobox
     }
     auth_params = URI.encode_www_form query
     encoded_params = URI.encode_www_form params
-    "#{API_URL}/#{action}?#{auth_params}#{encoded_params}"
+    url = "#{API_URL}/#{action}?#{auth_params}"
+    url += "&#{encoded_params}" unless params.nil? || params.empty?
+    url
   end
 end
