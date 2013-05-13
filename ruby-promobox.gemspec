@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.description = "Ruby API promobox"
   s.summary = "Ruby lib for talking with promobox API"
   s.extra_rdoc_files = %w(README.markdown)
+  s.license = 'MIT'
   s.files = Dir["LICENSE", "README.markdown", "Gemfile", "lib/**/*.rb", 'test/**/*.rb']
   s.test_files = Dir.glob("test/*_test.rb")
   s.require_paths = ["lib"]
