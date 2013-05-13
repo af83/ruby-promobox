@@ -20,7 +20,7 @@ class Promobox
 
   %w{coupons search shops}.each do |m|
     define_method m do |*params|
-      url = build_query(m, params || {})
+      url = build_query(m, params.first || {})
       response = OpenURI::OpenRead.read(url)
       MultiJson.decode(response)
     end
