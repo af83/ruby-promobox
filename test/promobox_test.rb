@@ -107,4 +107,34 @@ describe Promobox do
       end
     end
   end
+
+  describe 'shop' do
+    it 'must have an id' do
+      proc { @promobox.shop }.must_raise ArgumentError
+    end
+
+    describe 'invalid id' do
+      before do
+        promobox_stub('shop/af83')
+      end
+
+      it 'should respond' do
+        shop = @promobox.shop 'af83'
+        shop['status'].must_equal 'error'
+        shop['status_code'].must_equal 404
+      end
+    end
+
+    describe 'valid id' do
+      before do
+        promobox_stub('shop/2004')
+      end
+
+      it 'should respond' do
+        shop = @promobox.shop '2004'
+        shop['status'].must_equal nil
+        shop['id'].must_equal 2004
+      end
+    end
+  end
 end

@@ -16,8 +16,8 @@ Implemented methods:
 @promobox.coupons(params)
 @promobox.shops(params)
 @promobox.coupon(id)
+@promobox.shop(id)
 ```
-
 
 Resources
 ---------

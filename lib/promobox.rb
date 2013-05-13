@@ -30,6 +30,11 @@ class Promobox
     decode_url(url)
   end
 
+  def shop(id)
+    url = build_query("#{__method__}/#{id}")
+    decode_url(url)
+  end
+
   private
 
   def decode_url(url)
