@@ -18,7 +18,7 @@ class Promobox
     @hash_password = Digest::MD5.digest("#{@password}{#{@api_key}}").unpack('H*').first
   end
 
-  %w{coupons search}.each do |m|
+  %w{coupons search shops}.each do |m|
     define_method m do |*params|
       url = build_query(m, params || {})
       response = OpenURI::OpenRead.read(url)

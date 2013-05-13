@@ -14,6 +14,7 @@ Implemented methods:
 ```ruby
 @promobox.search(params)
 @promobox.coupons(params)
+@promobox.shops(params)
 ```
 
 

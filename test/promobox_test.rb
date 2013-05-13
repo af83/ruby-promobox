@@ -42,4 +42,19 @@ describe Promobox do
       coupons['total_item'].must_equal 544
     end
   end
+
+  describe 'shops' do
+    before do
+      promobox_stub('shops')
+    end
+
+    it 'should respond' do
+      shops = @promobox.shops
+      shops.must_be_instance_of Hash
+      shops['data'].must_be_empty
+      shops['current_page'].must_equal 1
+      shops['total_page'].must_equal 0
+      shops['total_item'].must_equal 0
+    end
+  end
 end
