@@ -15,6 +15,7 @@ Implemented methods:
 @promobox.search(params)
 @promobox.coupons(params)
 @promobox.shops(params)
+@promobox.coupon(id)
 ```
 
 

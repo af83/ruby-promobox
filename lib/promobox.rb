@@ -21,14 +21,23 @@ class Promobox
   %w{coupons search shops}.each do |m|
     define_method m do |*params|
       url = build_query(m, params.first || {})
-      response = OpenURI::OpenRead.read(url)
-      MultiJson.decode(response)
+      decode_url(url)
     end
+  end
+
+  def coupon(id)
+    url = build_query("#{__method__}/#{id}")
+    decode_url(url)
   end
 
   private
 
-  def build_query(action, params)
+  def decode_url(url)
+    response = Kernel.open(url)
+    MultiJson.decode(response)
+  end
+
+  def build_query(action, params = {})
     ts = Time.now.to_i
     token = Base64.encode64(Digest::SHA1.digest("#{@hash_password}#{ts}#{@api_key}")).chomp
     query = {

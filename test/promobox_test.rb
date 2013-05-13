@@ -13,7 +13,7 @@ describe Promobox do
     file = "#{action}_#{URI.encode_www_form params}.json" unless params.empty?
     fixture_file = File.expand_path(File.join(File.dirname(__FILE__), 'fixtures', file))
     url = @promobox.send(:build_query, action, params)
-    stub(OpenURI::OpenRead).read(url) { File.read fixture_file }
+    stub(Kernel).open(url) { File.read fixture_file }
   end
 
   describe 'search' do
@@ -74,6 +74,36 @@ describe Promobox do
         shops['current_page'].must_equal 1
         shops['total_page'].must_equal 260
         shops['total_item'].must_equal 5187
+      end
+    end
+  end
+
+  describe 'coupon' do
+    it 'must have an id' do
+      proc { @promobox.coupon }.must_raise ArgumentError
+    end
+
+    describe 'invalid id' do
+      before do
+        promobox_stub('coupon/af83')
+      end
+
+      it 'should respond' do
+        coupon = @promobox.coupon 'af83'
+        coupon['status'].must_equal 'error'
+        coupon['status_code'].must_equal 404
+      end
+    end
+
+    describe 'valid id' do
+      before do
+        promobox_stub('coupon/7465')
+      end
+
+      it 'should respond' do
+        coupon = @promobox.coupon '7465'
+        coupon['status'].must_equal nil
+        coupon['id'].must_equal 7465
       end
     end
   end
