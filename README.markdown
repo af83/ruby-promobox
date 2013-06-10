@@ -29,5 +29,5 @@ Tests
 -----
 
 ``` ruby
-bundle exec ruby test/promobox_test.rb
+bundle exec rake
 ```
