@@ -16,6 +16,12 @@ describe Promobox do
     stub(Kernel).open(url) { File.read fixture_file }
   end
 
+  describe 'Net error' do
+    it 'should be nil' do
+      @promobox.send(:decode_url, 'af83').must_equal nil
+    end
+  end
+
   describe 'search' do
     before do
       promobox_stub('search')

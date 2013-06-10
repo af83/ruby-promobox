@@ -38,8 +38,10 @@ class Promobox
   private
 
   def decode_url(url)
-    response = Kernel.open(url)
-    MultiJson.decode(response)
+      response = Kernel.open(url)
+      MultiJson.decode(response)
+  rescue
+    nil
   end
 
   def build_query(action, params = {})
