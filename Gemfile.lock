@@ -9,6 +9,7 @@ GEM
   specs:
     minitest (2.5.1)
     multi_json (1.7.2)
+    rake (10.0.4)
     rr (1.0.5)
 
 PLATFORMS
@@ -16,5 +17,6 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (>= 2.0)
+  rake
   rr (>= 1.0.5)
   ruby-promobox!
