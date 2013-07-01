@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "ruby-promobox"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
   s.date = Time.now.utc.strftime("%Y-%m-%d")
   s.homepage = "http://github.com/AF83/#{s.name}"
   s.authors = ["Laurent Arnoud"]
