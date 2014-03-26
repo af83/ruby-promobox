@@ -11,10 +11,11 @@ class Promobox
   API_VERSION = 'v3'
   API_URL = "http://api.promobox.fr/api/#{API_VERSION}"
 
-  def initialize(api_key, login, password)
+  def initialize(api_key, login, password, open_options={})
     @api_key = api_key
     @login = login
     @password = password
+    @open_options = open_options
     @hash_password = Digest::MD5.digest("#{@password}{#{@api_key}}").unpack('H*').first
   end
 
@@ -38,7 +39,7 @@ class Promobox
   private
 
   def decode_url(url)
-    response = Kernel.open(url)
+    response = Kernel.open(url, @open_options)
     MultiJson.decode(response)
   rescue
     nil

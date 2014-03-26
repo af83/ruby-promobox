@@ -13,7 +13,7 @@ describe Promobox do
     file = "#{action}_#{URI.encode_www_form params}.json" unless params.empty?
     fixture_file = File.expand_path(File.join(File.dirname(__FILE__), 'fixtures', file))
     url = @promobox.send(:build_query, action, params)
-    stub(Kernel).open(url) { File.read fixture_file }
+    stub(Kernel).open(url, {}) { File.read fixture_file }
   end
 
   describe 'Net error' do
